@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Selenium Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .result { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Demo Form</h1>
+    <form id="testForm">
+        <label for="username">Tên người dùng:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Mật khẩu:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <button type="submit">Đăng nhập</button>
+    </form>
+    <p class="result" id="result"></p>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === 'admin' && password === '12345') {
+                document.getElementById('result').textContent = 'Đăng nhập thành công!';
+            } else {
+                document.getElementById('result').textContent = 'Sai thông tin!';
+            }
+        });
+    </script>
+</body>
+</html>
