@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-# Khởi tạo Service với đường dẫn từ ChromeDriverManager
+
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
@@ -14,6 +14,7 @@ def run_test_case(username, password, expected_result, test_name):
         username_field = driver.find_element(By.ID, "username")
         password_field = driver.find_element(By.ID, "password")
         submit_button = driver.find_element(By.XPATH, "//button[@type='submit']")
+
         username_field.clear()
         password_field.clear()
         username_field.send_keys(username)
@@ -21,7 +22,7 @@ def run_test_case(username, password, expected_result, test_name):
 
         submit_button.click()
 
-        time.sleep(1)  
+        time.sleep(3)  
 
         result = driver.find_element(By.ID, "result").text
         if result == expected_result:
